@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unimed Premium</title>
+    <style>
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+        @import url('https://unpkg.com/leaflet@1.7.1/dist/leaflet.css');
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            position: relative;
+            height: 100vh;
+            overflow-x: hidden;
+            overflow-y: auto;
+            color: #fff;
+            background-color: #00A859; /* Cor da Unimed */
+        }
+
+        header {
+            background: #00794D; /* Tom mais escuro de verde */
+            color: white;
+            padding: 10px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        section {
+            margin: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            color: #00794D;
+        }
+
+        h2 {
+            color: #00A859;
+        }
+
+        p {
+            color: #00794D;
+        }
+
+        footer {
+            background: #00794D;
+            color: white;
+            padding: 5px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        #map {
+            height: 300px;
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .star-rating i {
+            color: #FFD700;
+            font-size: 2em;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .star-rating i:hover,
+        .star-rating i.active {
+            color: #FFA500;
+        }
+
+        #video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.5;
+        }
+    </style>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+</head>
+
+<body>
+    <video id="video-background" autoplay muted loop>
+        <source src="your-video.mp4" type="video/mp4">
+        Seu navegador não suporta o elemento de vídeo.
+    </video>
+
+    <header>
+        <h1>Bem-vindo à Unimed Premium</h1>
+    </header>
+
+    <section id="gps-section">
+        <h2>Localização</h2>
+        <div id="map"></div>
+        <p>Encontre nossa unidade mais próxima no mapa acima.</p>
+        <p><strong>Endereço:</strong> Av. Brasil 1234, Centro, Cidade <a href="https://www.google.com/maps" target="_blank" style="color: #00794D;">Abrir no Google Maps</a></p>
+    </section>
+
+    <section id="reviews-section">
+        <h2>Depoimentos de Clientes</h2>
+        <ul>
+            <li>
+                <p><i class="fas fa-user"></i> Ana Maria: "Ótimo atendimento e serviços excelentes!"</p>
+            </li>
+            <li>
+                <p><i class="fas fa-user"></i> Carlos Souza: "Sempre que preciso, a Unimed está lá por mim."</p>
+            </li>
+            <li>
+                <p><i class="fas fa-user"></i> Fernanda Lima: "Recomendo a todos pela qualidade e confiança."</p>
+            </li>
+        </ul>
+    </section>
+
+    <section id="star-rating-section">
+        <h2>Avaliação de Estrelas</h2>
+        <div class="star-rating">
+            <i class="fas fa-star" data-value="1"></i>
+            <i class="fas fa-star" data-value="2"></i>
+            <i class="fas fa-star" data-value="3"></i>
+            <i class="fas fa-star" data-value="4"></i>
+            <i class="fas fa-star" data-value="5"></i>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Unimed Premium. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inicializa o mapa
+            var map = L.map('map').setView([-23.55052, -46.633308], 15); // Coordenadas de exemplo
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(map);
+            L.marker([-23.55052, -46.633308]).addTo(map)
+                .bindPopup('Unimed Premium')
+                .openPopup();
+
+            // Interatividade das estrelas
+            const stars = document.querySelectorAll('.star-rating i');
+            stars.forEach(star => {
+                star.addEventListener('click', function () {
+                    stars.forEach(s => s.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
+
+
