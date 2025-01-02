@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -19,11 +19,11 @@
             overflow-x: hidden;
             overflow-y: auto;
             color: #fff;
-            background-color: #00A859; /* Cor da Unimed */
+            background-color: #00A859; /* Unimed Color */
         }
 
         header {
-            background: #00794D; /* Tom mais escuro de verde */
+            background: #00794D; /* Darker shade of green */
             color: white;
             padding: 10px;
             text-align: center;
@@ -91,37 +91,37 @@
 <body>
     <video id="video-background" autoplay muted loop>
         <source src="your-video.mp4" type="video/mp4">
-        Seu navegador não suporta o elemento de vídeo.
+        Your browser does not support the video element.
     </video>
 
     <header>
-        <h1>Bem-vindo à Unimed Premium</h1>
+        <h1>Welcome to Unimed Premium</h1>
     </header>
 
     <section id="gps-section">
-        <h2>Localização</h2>
+        <h2>Location</h2>
         <div id="map"></div>
-        <p>Encontre nossa unidade mais próxima no mapa acima.</p>
-        <p><strong>Endereço:</strong> Av. Brasil 1234, Centro, Cidade <a href="https://www.google.com/maps" target="_blank" style="color: #00794D;">Abrir no Google Maps</a></p>
+        <p>Find our nearest unit on the map above.</p>
+        <p><strong>Address:</strong> Av. Brasil 1234, Centro, City <a href="https://www.google.com/maps" target="_blank" style="color: #00794D;">Open in Google Maps</a></p>
     </section>
 
     <section id="reviews-section">
-        <h2>Depoimentos de Clientes</h2>
+        <h2>Customer Testimonials</h2>
         <ul>
             <li>
-                <p><i class="fas fa-user"></i> Ana Maria: "Ótimo atendimento e serviços excelentes!"</p>
+                <p><i class="fas fa-user"></i> Ana Maria: "Great service and excellent services!"</p>
             </li>
             <li>
-                <p><i class="fas fa-user"></i> Carlos Souza: "Sempre que preciso, a Unimed está lá por mim."</p>
+                <p><i class="fas fa-user"></i> Carlos Souza: "Whenever I need it, Unimed is there for me."</p>
             </li>
             <li>
-                <p><i class="fas fa-user"></i> Fernanda Lima: "Recomendo a todos pela qualidade e confiança."</p>
+                <p><i class="fas fa-user"></i> Fernanda Lima: "I recommend it to everyone for quality and trust."</p>
             </li>
         </ul>
     </section>
 
     <section id="star-rating-section">
-        <h2>Avaliação de Estrelas</h2>
+        <h2>Star Rating</h2>
         <div class="star-rating">
             <i class="fas fa-star" data-value="1"></i>
             <i class="fas fa-star" data-value="2"></i>
@@ -132,20 +132,20 @@
     </section>
 
     <footer>
-        <p>&copy; 2024 Unimed Premium. Todos os direitos reservados.</p>
+        <p>&copy; 2024 Unimed Premium. All rights reserved.</p>
     </footer>
 
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Inicializa o mapa
-            var map = L.map('map').setView([-23.55052, -46.633308], 15); // Coordenadas de exemplo
+            // Initialize the map
+            var map = L.map('map').setView([-23.55052, -46.633308], 15); // Example coordinates
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(map);
             L.marker([-23.55052, -46.633308]).addTo(map)
                 .bindPopup('Unimed Premium')
                 .openPopup();
 
-            // Interatividade das estrelas
+            // Star rating interactivity
             const stars = document.querySelectorAll('.star-rating i');
             stars.forEach(star => {
                 star.addEventListener('click', function () {
